@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Willkommen Zuhause</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+      color: #ffffff;
+    }
+    header {
+      padding: 40px 20px;
+      text-align: center;
+      background: rgba(0,0,0,0.3);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      margin-top: 10px;
+      color: #cfcfe8;
+    }
+    main {
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 20px;
+      background: rgba(0,0,0,0.15);
+      border-radius: 20px;
+    }
+    .card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #8fd3ff;
+    }
+    .info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .info div {
+      background: rgba(0,0,0,0.25);
+      padding: 10px 14px;
+      border-radius: 10px;
+    }
+    .qr {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+    @media (max-width: 600px) {
+      main {
+        margin: 10px;
+        padding: 15px;
+      }
+      .info {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🏠 Willkommen bei uns!</h1>
+    <p>Schön, dass du da bist. Hier sind ein paar Infos zu unserem Haus.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>📶 WLAN</h2>
+      <div class="info">
+        <div><strong>Name:</strong> UnserWLAN</div>
+        <div><strong>Passwort:</strong> ********</div>
+      </div>
+      <div class="qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=WIFI:T:WPA;S:FRITZBox7530MA;P:Passwort123;;" alt="WLAN QR Code" />
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>ℹ️ Haus-Infos</h2>
+      <div class="info">
+        <div><strong>Adresse:</strong> Hauptstraße 30e</div>
+        <div><strong>Stockwerke:</strong> 4</div>
+        <div><strong>Badezimmer:</strong> 3</div>
+        <div><strong>Besonderes:</strong> Garten, Dachboden & Keller</div>
+        <div><strong>Garage:</strong> Stuff zum Zelten und Fahrräder und mehr.</div>
+        <div><strong>Haustiere:</strong> -Keine-</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>📞 Wichtige Kontakte</h2>
+      <div class="info">
+        <div><strong>Notfall:</strong> 112</div>
+        <div><strong>Hausbesitzer:</strong> Lena Lachmund / Andre Lachmund</div>
+        <div><strong>Nachbar:</strong> Alexandra Paul</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 – Unser Zuhause
+  </footer>
+
+</body>
+</html>
