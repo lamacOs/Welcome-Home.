@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Willkommen Zuhause</title>
+
   <style>
     body {
       margin: 0;
@@ -11,19 +12,62 @@
       background: linear-gradient(135deg, #1e1e2f, #2b2b45);
       color: #ffffff;
     }
+
+    /* 🔒 Sperrbildschirm */
+    #lockscreen {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    #lockscreen input {
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      width: 260px;
+      margin-top: 10px;
+    }
+
+    #lockscreen button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      background: #8fd3ff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #error {
+      color: #ff6b6b;
+      margin-top: 10px;
+      display: none;
+    }
+
+    /* 🔐 Inhalt erstmal versteckt */
+    #content {
+      display: none;
+    }
+
     header {
       padding: 40px 20px;
       text-align: center;
       background: rgba(0,0,0,0.3);
     }
+
     header h1 {
       margin: 0;
       font-size: 2.5em;
     }
+
     header p {
       margin-top: 10px;
       color: #cfcfe8;
     }
+
     main {
       max-width: 500px;
       margin: 30px auto;
@@ -31,6 +75,7 @@
       background: rgba(0,0,0,0.15);
       border-radius: 20px;
     }
+
     .card {
       background: rgba(255,255,255,0.08);
       border-radius: 16px;
@@ -38,36 +83,38 @@
       margin-bottom: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
+
     .card h2 {
       margin-top: 0;
       color: #8fd3ff;
     }
+
     .info {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
+
     .info div {
       background: rgba(0,0,0,0.25);
       padding: 10px 14px;
       border-radius: 10px;
     }
+
     .qr {
       display: flex;
       justify-content: center;
       margin-top: 15px;
     }
+
     footer {
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
       color: #aaa;
     }
+
     @media (max-width: 600px) {
-      main {
-        margin: 10px;
-        padding: 15px;
-      }
       .info {
         grid-template-columns: 1fr;
       }
@@ -76,6 +123,20 @@
 </head>
 <body>
 
+<!-- 🔒 LOGIN -->
+<div id="lockscreen">
+  <div>
+    <h1>🔐 Geschützter Bereich</h1>
+    <p>Bitte Haus-Code eingeben</p>
+    <input type="password" id="codeInput" placeholder="Code eingeben" />
+    <br>
+    <button onclick="checkCode()">Entsperren</button>
+    <div id="error">❌ Falscher Code</div>
+  </div>
+</div>
+
+<!-- 🔓 INHALT -->
+<div id="content">
   <header>
     <h1>🏠 Willkommen bei uns!</h1>
     <p>Schön, dass du da bist. Hier sind ein paar Infos zu unserem Haus.</p>
@@ -89,7 +150,7 @@
         <div><strong>Passwort:</strong> 29252827401375564193</div>
       </div>
       <div class="qr">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=WIFI:T:WPA;S:FRITZBox7530MA;P:29252827401375564193;;" alt="WLAN QR Code" />
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=WIFI:T:WPA;S:FRITZBox7530MA;P:29252827401375564193;;">
       </div>
     </section>
 
@@ -109,8 +170,8 @@
       <h2>📞 Wichtige Kontakte</h2>
       <div class="info">
         <div><strong>Notfall:</strong> 112</div>
-        <div><strong>Hausbesitzer:</strong> Lena Lachmund (+49 176 56964426)/ Andre Lachmund (+49 176 51865871)</div>
-        <div><strong>Nachbar:</strong> Alexandra Paul (+49 176 64701677)</div>
+        <div><strong>Hausbesitzer:</strong> Lena & Andre Lachmund</div>
+        <div><strong>Nachbar:</strong> Alexandra Paul</div>
       </div>
     </section>
   </main>
@@ -118,7 +179,21 @@
   <footer>
     © 2026 – Unser Zuhause
   </footer>
+</div>
+
+<script>
+  const SECRET_CODE = "Haus:wehufh238.,;´ß";
+
+  function checkCode() {
+    const input = document.getElementById("codeInput").value;
+    if (input === SECRET_CODE) {
+      document.getElementById("lockscreen").style.display = "none";
+      document.getElementById("content").style.display = "block";
+    } else {
+      document.getElementById("error").style.display = "block";
+    }
+  }
+</script>
 
 </body>
 </html>
-
